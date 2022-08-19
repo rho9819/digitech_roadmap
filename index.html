@@ -67,7 +67,7 @@
                   } else {
                     uid = user.uid
                     db.collection(uid).doc("question").set({
-    HTML: true,
+    HTML: false,
 })
 .then(() => {
     console.log("Document successfully written!");
