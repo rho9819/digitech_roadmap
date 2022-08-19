@@ -28,35 +28,14 @@ subMenu[grade].map((sub, i)=>{
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
-        db.collection(uid).doc("question").update({
-          HTML: false
+        db.collection(uid).doc("question").set({
+          HTML: false,
       })
       .then(() => {
-          console.log("Document successfully updated!");
-          docRef.get().then((doc) => {
-            if (doc.exists) {
-        
-              const subMenu = [["HTML", "CSS", "Java"], ["JavaScript", "React", "JSP", "Python"], ["Portfolio" , "면접"]]
-      const grade = localStorage.getItem("grade");
-      const subMenuBox = document.getElementById("sub-menu-box");
-      subMenu[grade].map((sub, i)=>{
-          subMenuBox.innerHTML += `
-          <div class="sub-menu ${i == 0 ? "success" : doc.data()[subMenu[grade][i-1]] ? "success" : ""}" ${i == 0 ? `onclick="goQuestion('${sub}')"` : doc.data()[subMenu[grade][i-1]] ? `onclick="goQuestion('${sub}')"` : ""}>${sub}</div>
-          ${subMenu[grade].length == i+1 ? "" : '<i class="fa-solid fa-chevron-down"></i>'}
-          
-          `
+          console.log("Document successfully written!");
       })
-          }else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-          }
-          }).catch((error) => {
-            console.log("Error getting document:", error);
-        });
-      })
-      .catch((error) => { 
-          // The document probably doesn't exist.
-          console.error("Error updating document: ", error);
+      .catch((error) => {
+          console.error("Error writing document: ", error);
       });
     }
 }).catch((error) => {
