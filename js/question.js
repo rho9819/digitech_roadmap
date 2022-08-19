@@ -123,7 +123,7 @@ function answerCheck(result) {
     } else {
         questionsBox.innerHTML += `다시 한번 공부해보고 다음 레벨을 공부 하세요.`
     }
-    questionsBox.innerHTML += `<a href="index.html">메뉴로 가기</a>`
+    questionsBox.innerHTML += `<a href="./index.html">메뉴로 가기</a>`
     }
     
     

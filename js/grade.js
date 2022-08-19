@@ -72,5 +72,5 @@ subMenu[grade].map((sub, i)=>{
 
     function goQuestion(subMenu) {
         localStorage.setItem("subMenu", subMenu)
-        window.location.href = "/question.html"
+        window.location.href = "./question.html"
     }
