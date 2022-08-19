@@ -28,15 +28,7 @@ subMenu[grade].map((sub, i)=>{
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
-        db.collection(uid).doc("question").set({
-          HTML: false,
-      })
-      .then(() => {
-          console.log("Document successfully written!");
-      })
-      .catch((error) => {
-          console.error("Error writing document: ", error);
-      });
+        
     }
 }).catch((error) => {
     console.log("Error getting document:", error);
