@@ -66,15 +66,16 @@
         });
                   } else {
                     uid = user.uid
-                    db.collection(uid).doc("question").set({
-    HTML: false,
-})
-.then(() => {
-    console.log("Document successfully written!");
-})
-.catch((error) => {
-    console.error("Error writing document: ", error);
-});
+                    db.collection(uid).doc("question").update({
+        user: true
+    })
+    .then(() => {
+        console.log("Document successfully updated!");
+    })
+    .catch((error) => { 
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+    });
                   }
         } else {
           var provider = new firebase.auth.GoogleAuthProvider();
