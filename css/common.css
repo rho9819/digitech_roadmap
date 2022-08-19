@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none;
+}
+body {
+    background-color: #fcfcfc;
+}
+#Phone{
+        position: relative;
+        max-width: 480px;
+        min-width: 280px;
+        height: 100vh;
+        margin: 0 auto;
+        background-color: #ffffff;
+        box-shadow: 0 0 20px rgb(0 0 0 / 5%);
+        overflow-x: hidden;
+}
+
+#logo{
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid black;
+    margin-bottom: 60px;
+}
+#logo .logout {
+    position: absolute;
+    display: flex;
+    right: 10px;
+    height: 100%;
+    top: 0;
+    align-items: center;
+    cursor: pointer;
+}
+
+#logo #Back {
+    position: absolute;
+    display: flex;
+    left: 10px;
+    height: 100%;
+    top: 0;
+    align-items: center;
+    cursor: pointer;
+}
+
+#logo #Back a{
+    text-decoration-line: none;
+    color: black;
+}

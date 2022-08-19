@@ -1,0 +1,47 @@
+#menu{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+#menu .menu-box{
+    width: 80%;
+    margin-bottom: 40px;
+    color: white;
+}
+
+#menu .menu-box h2{
+    width: 100%;
+    background-color: #1375ff;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+#menu .menu-box h2:hover{
+    background-color: #5CA1FF;
+}
+#menu .menu-box h2.active{
+    border-radius: 10px 10px 0px 0px;
+}
+
+#menu .menu-box ul li{
+    width: 100%;
+    background-color: #3E8AF7;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: .3s;
+}
+#menu .menu-box ul li:hover{
+    background-color: #2a74db;
+    color: white;
+}
+#menu .menu-box ul li:last-child{
+    border-radius: 0px 0px 10px 10px;
+}
+

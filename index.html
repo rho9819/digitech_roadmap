@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디지텍 로드맵</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/menu.css">
+</head>
+<body>
+<div id="Phone">
+    <div id="logo">
+        <h3>1학년 로드맵</h3>
+        <p class="logout" onclick="logout()">로그아웃</p>
+    </div>
+
+    <div id="menu">
+        <div class="menu-box">
+            <h2 class="active">인공지능융합 계열</h2>
+        <ul>
+            <li onclick="goGrade(0)">1학년 로드맵</li>
+            <li onclick="goGrade(1)">2학년 로드맵</li>
+            <li onclick="goGrade(2)">3학년 로드맵</li>
+        </ul>
+        </div>
+        <div class="menu-box">
+            <h2>게임개발 계열</h2>
+        </div>
+    </div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+<script src="js/firebase.js"></script>
+<script>
+    var uid;
+    firebase.auth().onAuthStateChanged(async(user) => {
+        if (user) {
+          if (!user.email.includes("@sdh.hs.kr")) {
+                    alert("학교계정으로만 로그인 가능합니다.");
+                    const user = firebase.auth().currentUser;
+                    user.delete().then(() => {
+          // User deleted.
+        }).catch((error) => {
+          // An error ocurred
+          // ...
+        });
+                  } else {
+                    uid = user.uid
+                  }
+        } else {
+          var provider = new firebase.auth.GoogleAuthProvider();
+          provider.setCustomParameters({
+            'login_hint': 'sdh@sdh.hs.kr'
+          });
+          firebase.auth().signInWithRedirect(provider);
+          firebase.auth()
+            .getRedirectResult()
+            .then((result) => {
+              if (result.credential) {
+                /** @type {firebase.auth.OAuthCredential} */
+                var credential = result.credential;
+        
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                var token = credential.accessToken;
+                // ...
+                console.log(result);
+              }
+              // The signed-in user info.
+              var user = result.user;
+            }).catch((error) => {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              // The email of the user's account used.
+              var email = error.email;
+              // The firebase.auth.AuthCredential type that was used.
+              var credential = error.credential;
+              // ...
+            });
+        
+        }
+        });
+</script>
+    <script>
+        function goGrade(grade) {
+            localStorage.setItem("grade", grade);
+            window.location.href = "/sub_menu.html"
+        }
+    </script>
+</body>
+</html>
