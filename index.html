@@ -49,6 +49,15 @@
         });
                   } else {
                     uid = user.uid
+                    db.collection(uid).doc("question").set({
+    HTML: true,
+})
+.then(() => {
+    console.log("Document successfully written!");
+})
+.catch((error) => {
+    console.error("Error writing document: ", error);
+});
                   }
         } else {
           var provider = new firebase.auth.GoogleAuthProvider();
