@@ -13,6 +13,13 @@
     background-color: #6dacffce;
     margin: 10px 0;
     cursor: not-allowed;
+    color: white;
+    position: relative;
+}
+.sub-menu i {
+    position: absolute;
+    left: 10px;
+    top: 12.5px;
 }
 .sub-menu.success{
     cursor: pointer;

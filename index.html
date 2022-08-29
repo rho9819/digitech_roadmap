@@ -28,7 +28,7 @@
 <body>
 <div id="Phone">
     <div id="logo">
-        <h3>1학년 로드맵</h3>
+        <h3>디지텍 로드맵</h3>
         <p class="logout" onclick="logout()">로그아웃</p>
     </div>
 
@@ -42,7 +42,7 @@
         </ul>
         </div>
         <div class="menu-box">
-            <h2>게임개발 계열</h2>
+            <h2 id="game">게임개발 계열</h2>
         </div>
     </div>
 </div>
@@ -53,6 +53,10 @@
 <script src="js/firebase.js"></script>
 <script>
     var uid;
+    let game = document.getElementById('game');
+    game.addEventListener('click',()=>{
+      alert('준비중 입니다.')
+    });
     firebase.auth().onAuthStateChanged(async(user) => {
         if (user) {
           if (!user.email.includes("@sdh.hs.kr")) {

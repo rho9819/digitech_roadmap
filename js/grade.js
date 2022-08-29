@@ -18,9 +18,10 @@ docRef.get().then((doc) => {
         const subMenu = [["HTML", "CSS", "Java"], ["JavaScript", "React", "JSP", "Python"], ["Portfolio" , "면접"]]
 const grade = localStorage.getItem("grade");
 const subMenuBox = document.getElementById("sub-menu-box");
+document.getElementById('title').innerHTML = `${parseInt(grade)+1}학년 로드맵`
 subMenu[grade].map((sub, i)=>{
     subMenuBox.innerHTML += `
-    <div class="sub-menu ${i == 0 ? "success" : doc.data()[subMenu[grade][i-1]] ? "success" : ""}" ${i == 0 ? `onclick="goQuestion('${sub}')"` : doc.data()[subMenu[grade][i-1]] ? `onclick="goQuestion('${sub}')"` : ""}>${sub}</div>
+    <div class="sub-menu ${i == 0 ? "success" : doc.data()[subMenu[grade][i-1]] ? "success" : ""}" ${i == 0 ? `onclick="goQuestion('${sub}')"` : doc.data()[subMenu[grade][i-1]] ? `onclick="goQuestion('${sub}')"` : ""}>${i == 0 ? `<i class="fa-solid fa-circle-check"></i>` : doc.data()[subMenu[grade][i-1]] ? `<i class="fa-solid fa-circle-check"></i>` : ""}${sub}</div>
     ${subMenu[grade].length == i+1 ? "" : '<i class="fa-solid fa-chevron-down"></i>'}
     
     `
